@@ -39,7 +39,7 @@ pub fn open_device(
 
         if device_desc.vendor_id() == vid && device_desc.product_id() == pid {
             match device.open() {
-                Ok(mut handle) => {
+                Ok(handle) => {
                     let config = match device.config_descriptor(0) {
                         Ok(c) => c,
                         Err(_) => continue,
@@ -87,10 +87,7 @@ pub fn close_device(
 }
 
 #[cfg(not(any(target_os = "macos", target_os = "windows")))]
-pub fn close_device(
-    mut handle: DeviceHandle<Context>,
-    interfaces: Vec<u8>,
-) -> Result<(), YubicoError> {
+pub fn close_device(handle: DeviceHandle<Context>, interfaces: Vec<u8>) -> Result<(), YubicoError> {
     for interface in interfaces {
         handle.release_interface(interface)?;
         handle.attach_kernel_driver(interface)?;

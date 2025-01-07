@@ -1,6 +1,6 @@
 [package]
 name = "yubico_manager"
-version = "0.10.0"
+version = "0.10.1"
 authors = ["Flavio Oliveira <flavio@wisespace.io>", "Pierre-Étienne Meunier <pe@coturnix.fr>"]
 
 description = "Yubikey Challenge-Response & Configuration"
@@ -20,7 +20,7 @@ path = "src/lib.rs"
 
 [dependencies]
 rand = "0.8"
-bitflags = "2.4"
+bitflags = "2.6"
 rusb = "0.9"
 structure = "0.1"
 
